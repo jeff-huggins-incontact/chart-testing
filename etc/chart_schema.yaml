@@ -16,6 +16,7 @@ deprecated: bool(required=False)
 kubeVersion: str(required=False)
 annotations: map(str(), str(), required=False)
 type: str(required=False)
+argocdIgnoreDifferences: list(include('argocdIgnoreDifferences'), required=False)
 ---
 maintainer:
   name: str()
@@ -31,6 +32,14 @@ dependency:
   enabled: bool(required=False)
   import-values: any(list(str()), list(include('import-value')), required=False)
   alias: str(required=False)
+---
+argocdIgnoreDifferences:
+  kind: str()
+  group: str(required=False)
+  jqPathExpressions: list(str(), required=False)
+  jsonPointers: list(str(), required=False)
+  name: str(required=False)
+  namespace: str(required=False)
 ---
 import-value:
   child: str()
